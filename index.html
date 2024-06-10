@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmirElpo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="gameContainer" class="game-container">
+        <div id="gameContainerChild" class="game-container-child">
+            <h1 style="color:white" class="game-title">El POLO LOCO</h1>
+            <canvas id="canvas" class="game-canvas" width="720" height="480"></canvas>
+            <img src="./img/9_intro_outro_screens/start/startscreen_2.png" alt="StartScreen" class="start-screen-img" id="startScreen">
+            
+            <!-- Controllers before start -->
+            <div class="start-controllers" id="controllers">
+                <button id="buttonTest" onclick="startMyGame()" onmouseover="playClickSound()" id="startButton">START</button>
+                <button onclick="showGameTutorial()" onmouseover="playClickSound()" id="gameTutorialButton">TUTORIAL</button>
+            </div>
+            
+            <!-- Controllers While Gaming -->
+            <div class="gaming-controllers d-none" id="gamingControllers">
+                <img src="./icons/UnMute.svg" alt="mute" onclick="muteSounds()" onmouseover="playClickSound()" id="muteIcon">
+                <img src="./icons/music_on.svg" alt="music" onclick="backgroundMusicModifier()" onmouseover="playClickSound()" id="backgroundMusicIcon">
+                <img src="./icons/pause.svg" alt="pause" onclick="pauseAndPlayModifier()" onmouseover="playClickSound()" id="pauseIcon">
+            </div>
+            
+            <!-- Mobile controller -->
+            <div class="mobile-controller d-none" id="mobileController">
+                <img src="./icons/left.svg" alt="left" id="touchLeft">
+                <img src="./icons/right.svg" alt="right" id="touchRight">
+                <img src="./icons/up.svg" alt="up" id="touchUp">
+                <img src="./icons/bomb.svg" alt="throw" id="touchThrow">
+            </div>
+        </div>
+    </div>
+
+    <!-- LOADING OVERLAY -->
+    <div id="loadingOverlay" class="loading-overlay d-none">
+        <div class="loading-overlay-child">
+            <img src="gif/loading.gif" alt="Loading">
+        </div>
+    </div>
+    
+    <!-- SLIDES -- WIN -- LOST -->
+    <div class="slides-container d-none background-blurd" id="slidesContainer">
+        <div class="slides-container-child">
+            <!-- GAMEOVER -->
+            <div class="game-over-container d-none" id="gameOverContainer">
+                <!-- <img src="./img/5_background/first_half_background.png" alt="game-over-background" class="game-over-background" id="gameOverBackground"> -->
+                <img src="./img/9_intro_outro_screens/game_over/oh no you lost!.png" alt="you Lost" class="you-lost-heading" id="youLostHeading">
+            </div>
+            <!-- WINNING -->
+            <div class="game-win-container d-none" id="gameWinContainer">
+                <h1> !YOU WON!</h1>
+                <img src="./img/winning.png" alt="winning">
+            </div>
+              <!-- rotateDevice -->
+            <div class="rotateDeviceOverlay d-none" id="rotateDeviceOverlay">
+                <h1> !TURN YOUR DEVICE TO PLAY!</h1>
+            </div>
+            <button id="playAgainButton" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <!-- TUTORIAL -->
+    <div class="game-tutorial-container d-none background-blurd" id="gameTutorialContainer">
+        <div class="tutorial-container-child">
+            <img src="icons/x.svg" alt="close" id="tutorialCloseBtn" onclick="closeTutorialPanel()" onmouseover="playClickSound()">
+            <div class="tutorial-controller">
+                <p><span class="game-key">&#8594;</span> Walk Right</p>
+                <p><span class="game-key">&#8592;</span> Walk Left</p>
+                <p><span class="game-key">Space</span> Jump</p>
+                <p><span class="game-key">D</span> Throw Bottles</p>
+            </div>
+            <div class="tutorial-about">
+                <p>Du musst alle Tabasko-Flaschen sammeln, um das größte Huhn am Ende töten und gewinnen zu können.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+    <!-- LINKS -->
+    <script src="./js/models/imagePaths.js"></script>
+    <script src="./js/helperFunctions.js"></script>
+    <script src="./js/models/world.js"></script>
+    <script src="./js/models/keyboard.js"></script>
+    <script src="./js/audioManager.js"></script>
+    <script src="./js/keyboardManager.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/models/drawableObject.js"></script>
+    <script src="./js/models/movableObject.js"></script>
+    <script src="./js/models/collectableObjects.js"></script>
+    <script src="./js/models/level.js"></script>
+    <!-- STATUS BARS -->
+    <script src="./js/models/statusBars/statusBar.js"></script>
+    <script src="./js/models/statusBars/lifeBar.js"></script>
+    <script src="./js/models/statusBars/bigBossLifeBar.js"></script>
+    <script src="./js/models/statusBars/coinBar.js"></script>
+    <script src="./js/models/statusBars/bottleBar.js"></script>
+    <script src="./js/models/backgroundObject.js"></script>
+    <script src="./js/models/chicken.js"></script>
+    <script src="./js/models/character.js"></script>
+    <script src="./js/models/cloud.js"></script>
+    <script src="./js/models/bottles.js"></script>
+    <script src="./js/models/coin.js"></script>
+    <script src="./js/models/throwableBottle.js"></script>
+    <script src="./js/models/endBoss.js"></script>
+    <script src="./js/models/smallChicken.js"></script>
+    <script src="./js/levels/levelOne.js"></script>
+</body>
+
+</html>

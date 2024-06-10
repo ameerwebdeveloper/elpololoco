@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+:root {
+    --border-width: 10px;
+    --canvas-width: 720px;
+    --canvas-height: 480px;
+    --border-radius: 20px;
+    --border-radius-canvas: 0px;
+    --border-radius-slide: 10px;
+    --main-font: 'Press Start 2P';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url("./img/kakten.webp");
+    background-size: cover;
+    background-repeat: no-repeat; 
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#myButton {
+    position: absolute;
+}
+
+.game-title {
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-shadow: 7px 7px 7px yellow !important;
+    color: black !important;
+    position: absolute;
+    top: -80px;
+    left: 97px;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container-child {
+    position: relative;
+    animation: fadeInScaleUp 1s ease-out forwards;
+    animation: animated-border 20s linear infinite;
+    border-radius: var(--border-radius);
+    border: 10px solid black;
+    height: var(--canvas-height);
+    width: var(--canvas-width);
+    margin: 0;
+    padding: 0;
+}
+
+/* CONTROLLERS */
+.start-controllers {
+    position: absolute;
+    /* bottom: 0px; */
+    top: 0;
+    left: 0px;
+    right: 0px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.start-controllers button {
+    background-color: rgba(52, 73, 94, 0.6);
+    font-family: var(--main-font);
+    width: 25%;
+    color: white;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.start-controllers button:hover {
+    background-color: rgba(52, 73, 94, 1);
+    border: 2px solid yellow;
+}
+
+.gaming-controllers {
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    right: 4px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.gaming-controllers img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(52, 73, 94, 0.6);
+    border: 2px solid transparent;
+    margin: 0;
+    padding: 0;
+    margin-left: 2px;
+}
+
+.gaming-controllers img:hover {
+    background-color: rgba(52, 73, 94, 1);
+    border: 2px solid yellow;
+}
+
+.mobile-controller {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-bottom: 2px;
+    display: none;
+    justify-content: space-evenly;
+}
+
+.mobile-controller img {
+    height: 50px;
+    width: 50px;
+    background-color: rgba(52, 73, 94, 0.6);
+    border-radius: 50%;
+}
+
+.game-canvas {
+    display: none;
+    border-radius: var(--border-radius-canvas);
+}
+
+.start-screen-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* LOADING */
+
+.loading-overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.loading-overlay-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: var(--canvas-width); 
+    height: var(--canvas-height); 
+    border-radius: var(--border-radius-slide);
+}
+
+.slides-container {
+    position: absolute;
+    z-index: 9;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.slides-container-child {
+    position: relative;
+    animation: fadeInScaleUp 1s ease-out forwards;
+    width: var(--canvas-width); 
+    height: var(--canvas-height); 
+    border-radius: var(--border-radius-slide);
+    margin: 0;
+    padding: 0;
+}
+
+.game-over-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensures that anything outside the border-radius is clipped */
+    background-image: url("./img/5_background/first_half_background.png");
+    background-size: cover;
+    justify-content: center;
+    position: relative;
+    border-radius: var(--border-radius-slide);
+    margin: 0;
+    padding: 0;
+}
+
+.game-over-container img {
+    border-radius: 90px;
+    border-radius: var(--border-radius-slide);
+    width: 100%;
+}
+
+#playAgainButton {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(52, 73, 94, 0.6);
+    font-family: var(--main-font);
+    width: 25%;
+    color: white;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#playAgainButton:hover {
+    background-color: rgba(52, 73, 94, 1);
+    border: 2px solid yellow;
+}
+
+
+
+.game-win-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    background-image: url("./img/5_background/first_half_background.png");
+    background-size: cover;
+    justify-content: center;
+    border-radius: var(--border-radius-slide);
+    margin: 0;
+    padding: 0;
+}
+
+.game-win-container img {
+    width: 200px;
+    height: 200px;
+    display: inline-block; /* Allows for applying transformations */
+    animation: tiltShake 0.5s ease-in-out infinite; /* Animation, duration, timing function, infinite repeat */
+}
+
+.game-win-container h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 4em;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.rotateDeviceOverlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.rotateDeviceOverlay h1{
+    font-family: var(--main-font);
+}
+
+/* TUTORIAL */
+.game-tutorial-container {
+    position: absolute;
+    z-index: 99999999;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.background-blurd{
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(10px); 
+}
+
+.tutorial-container-child {
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgb(52, 73, 94); 
+    color: #ecf0f1; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 40%;
+    height: 40%;
+    overflow-y: hidden;
+}
+
+#tutorialCloseBtn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid yellow;
+    margin: 0;
+    padding: 0;
+}
+
+.tutorial-controller {
+
+}
+
+.game-key {
+    display: inline-block;
+    border: 2px solid yellow;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.tutorial-about {
+    margin-top: 20px;
+}
+
+.tutorial-about p {
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 1500px) {
+    .tutorial-container-child{
+        width: 50%;
+     }
+  }
+
+
+@media screen and (max-height: 700px) {
+    .tutorial-container-child{
+        overflow-y: scroll;
+     }
+  }
+@media (max-width: 760px), (max-height: 480px) {   
+    .game-title {
+        display: none;
+    }
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+    .game-container-child {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .game-container-child {
+        animation: none;
+        border-radius: unset;
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+    .slides-container-child {
+        animation: none;
+        border-radius: unset;
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-win-container img {
+        display: none;
+    }
+
+    /* GAMEOVER */
+    .game-over-container {
+        border: none;
+        border-radius: unset;
+    }
+    .game-over-container img {
+        border: none;
+        border-radius: unset;
+    }
+
+    /* CONTROLLERS */
+    .gaming-controllers img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: rgba(52, 73, 94, 0.6);
+        border: 2px solid transparent;
+        margin: 0;
+        padding: 0;
+    }
+    .gaming-controllers img:hover {
+        background-color: rgba(52, 73, 94, 0.6);
+        border: 2px solid transparent;
+    }
+
+    .gaming-controllers img:active {
+        background-color: rgba(52, 73, 94, 1);
+        border: 2px solid yellow;
+    }
+
+    .mobile-controller {
+        display: flex;
+    }
+    .tutorial-container-child {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        overflow: hidden;
+    }
+    #tutorialCloseBtn {
+        right: 2%;
+        top: 6%;
+    }
+
+    /* Loading Overlay */
+    .loading-overlay-child {
+        width: 100%; 
+        height: 100%; 
+        border-radius: unset;
+        border: none;
+    }
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0; /* Start from fully transparent */
+        transform: scale(0.95); /* Start slightly smaller */
+    }
+    to {
+        opacity: 1; /* Fade to fully opaque */
+        transform: scale(1); /* Scale to original size */
+    }
+}
+
+/* Keyframes definition for tilt shake effect */
+@keyframes tiltShake {
+    0%, 100% {
+        transform: rotate(0deg); /* Starts and ends at neutral position */
+    }
+    25% {
+        transform: rotate(-3deg); /* Slightly tilts to the left */
+    }
+    75% {
+        transform: rotate(3deg); /* Slightly tilts to the right */
+    }
+}
+
+@keyframes animated-border {
+    0% { border-color: #FF6347; }
+    25% { border-color: #FFD700; }
+    50% { border-color: #1E90FF; }
+    75% { border-color: #32CD32; }
+    100% { border-color: #FF6347; }
+}
